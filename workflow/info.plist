@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.github.dna75.quick-event</string>
+	<key>connections</key>
+	<dict>
+		<key>1A000000-0000-4000-8000-000000000001</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1A000000-0000-4000-8000-000000000002</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>1A000000-0000-4000-8000-000000000002</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>1A000000-0000-4000-8000-000000000002</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1A000000-0000-4000-8000-000000000003</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>dna75</string>
+	<key>description</key>
+	<string>Create a calendar event from one line of plain text, in English or Dutch</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Quick Event</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>./create.sh "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1A000000-0000-4000-8000-000000000002</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>{var:keyword}</string>
+				<key>queuedelaycustom</key>
+				<integer>1</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string></string>
+				<key>script</key>
+				<string>/usr/bin/python3 parse.py "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>E.g.: dentist tomorrow 2pm +1h @Office #work</string>
+				<key>title</key>
+				<string>Quick Event</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>1A000000-0000-4000-8000-000000000001</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Event</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>1A000000-0000-4000-8000-000000000003</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Create a calendar event from one line of text.
+
+Keyword: ev  (configurable)
+
+Examples
+  ev dentist tomorrow 2pm
+  ev lunch with Jan fri 12:30 +1.5h @Downtown #work
+  ev mom's birthday 5 dec          (no time = all day)
+  ev meeting 25-11 at 9:30 until 11:00 #personal
+
+Parts (in any order)
+  Date: today, tomorrow, mon..sun, 25-11, 5 dec   (Dutch words work too)
+  Time: 14:00, 2pm, 14.30, at 14:00
+  End: until 15:00, or a duration: +1h, +30m, +1.5h
+  Place: @Office (use underscores for spaces: @Main_Street)
+  Calendar: #work (the start of the name is enough)
+
+Enter creates the event in the calendar shown. Every writable calendar is listed as its own result, your default first. Cmd+Enter creates it and opens Calendar.</string>
+	<key>uidata</key>
+	<dict>
+		<key>1A000000-0000-4000-8000-000000000001</key>
+		<dict>
+			<key>note</key>
+			<string>ev + text: pick calendar</string>
+			<key>xpos</key>
+			<real>40.0</real>
+			<key>ypos</key>
+			<real>40.0</real>
+		</dict>
+		<key>1A000000-0000-4000-8000-000000000002</key>
+		<dict>
+			<key>note</key>
+			<string>Creates the event in Calendar</string>
+			<key>xpos</key>
+			<real>290.0</real>
+			<key>ypos</key>
+			<real>40.0</real>
+		</dict>
+		<key>1A000000-0000-4000-8000-000000000003</key>
+		<dict>
+			<key>note</key>
+			<string>Notification</string>
+			<key>xpos</key>
+			<real>540.0</real>
+			<key>ypos</key>
+			<real>40.0</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>ev</string>
+				<key>placeholder</key>
+				<string>ev</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Type this in Alfred to create an event.</string>
+			<key>label</key>
+			<string>Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>en</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>Nederlands</string>
+						<string>nl</string>
+					</array>
+					<array>
+						<string>English</string>
+						<string>en</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>Language of the texts shown in Alfred.</string>
+			<key>label</key>
+			<string>Language</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>language</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string>Calendar name</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Calendar used when you do not type #calendar. Leave empty for the first writable calendar.</string>
+			<key>label</key>
+			<string>Default calendar</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>default_calendar</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>60</string>
+				<key>placeholder</key>
+				<string>60</string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Duration in minutes when you do not type +1h or 'until 3pm'.</string>
+			<key>label</key>
+			<string>Default duration (minutes)</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>default_duration</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>Birthdays,Holidays,Scheduled Reminders</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Calendars that should not appear in the list, separated by commas.</string>
+			<key>label</key>
+			<string>Hide calendars</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>hide_calendars</string>
+		</dict>
+	</array>
+	<key>variables</key>
+	<dict/>
+	<key>variablesdontexport</key>
+	<array/>
+	<key>version</key>
+	<string>1.0</string>
+	<key>webaddress</key>
+	<string>https://github.com/dna75/alfred-quick-event</string>
+</dict>
+</plist>
