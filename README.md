@@ -6,7 +6,7 @@ Create a calendar event from one line of plain text, right from [Alfred](https:/
 
 ## Install
 
-Download `Quick Event.alfredworkflow` from the [latest release](https://github.com/dna75/alfred-quick-event/releases/latest) and double-click it. Requires the Alfred Powerpack.
+Download `Quick.Event.alfredworkflow` from the [latest release](https://github.com/dna75/alfred-quick-event/releases/latest) and double-click it. Requires the Alfred Powerpack.
 
 ## Usage
 
